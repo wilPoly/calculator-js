@@ -29,3 +29,11 @@ function operate(operator, a, b) {
 			return "invalid input";
 	}
 }
+
+// query the #display div
+// display the values chosen by the user
+// when the = sign is chosen by the user : 
+	// display the result of the operate function inside the div
+		// get the result
+		// store it in a variable
+		// 
