@@ -25,13 +25,12 @@ function operate(operator, a, b) {
 		case "/":
 			return divide(a,b);
 		default:
-			return "invalid input";
+			return "0";
 	}
 }
 
 const display = document.querySelector("#display");
 const buttons = document.querySelectorAll("#buttons > button");
-console.table(buttons);
 
 buttons.forEach(button => {
 	button.addEventListener("click", (e) => compose(e.target));
@@ -52,7 +51,7 @@ function compose(button) {
 		case "operator":
 			if (firstValue !== 0) {
 				secondValue = Number(result);
-				result = operate(operation, firstValue, secondValue);
+				result = operate(operation, firstValue, secondValue).toFixed(3);
 				printValue(result);
 				operation = button.value;
 				firstValue = Number(result);
@@ -76,10 +75,10 @@ function compose(button) {
 			}
 			printValue(result);
 			break;
-
+		
 		case "equals":
 			secondValue = Number(result);
-			result = operate(operation, firstValue, secondValue);
+			result = operate(operation, firstValue, secondValue).toFixed(3);
 			printValue(result);
 			firstValue = 0;
 			break;
