@@ -42,49 +42,58 @@ function printValue(value) {
 	console.log(value, typeof value);
 }
 
-let displayValue = "0";
+let result = "0";
 let firstValue = 0;
 let secondValue = 0;
-let result = 0;
 let operation = "";
 
 function compose(button) {
 	switch (button.className) {
 		case "operator":
-			operation = button.value;
-			firstValue = Number(displayValue);
-			displayValue = "0";
+			if (firstValue !== 0) {
+				secondValue = Number(result);
+				result = operate(operation, firstValue, secondValue);
+				printValue(result);
+				operation = button.value;
+				firstValue = Number(result);
+				secondValue = 0;
+				result = "0";
+			}
+			else {
+				operation = button.value;
+				firstValue = Number(result);
+				result = "0";
+				console.log(result, firstValue);
+			}
 			break;
 
 		case "operand":
-			if (displayValue === "0") {
-				displayValue = button.value;
+			if (result === "0") {
+				result = button.value;
 			}
 			else {
-				displayValue += button.value;
+				result += button.value;
 			}
-			printValue(displayValue);
+			printValue(result);
 			break;
 
 		case "equals":
-			secondValue = Number(displayValue);
-			displayValue = operate(operation, firstValue, secondValue);
-			printValue(displayValue);
+			secondValue = Number(result);
+			result = operate(operation, firstValue, secondValue);
+			printValue(result);
+			firstValue = 0;
 			break;
 		
 		case "clear":
 			allClear();
 			break;
-			
-			console.log(operation);
 	}
 }
 
 function allClear() {
-	displayValue = "0";
+	result = "0";
 	firstValue = 0;
 	secondValue = 0;
-	result = 0;
 	operation = "";
-	printValue(displayValue);
+	printValue(result);
 }
