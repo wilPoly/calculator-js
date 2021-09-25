@@ -2,22 +2,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Calculator - JS</title>
-	<link rel="stylesheet" href="style.css">
+	<!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
 	<script src="script.js" defer></script>
 
 	<div id="calc-wrap">
-		<div id="display">42</div>
-		<button value="clear" id="clear">Clear</button>
-		<div id="operators">
+		<div id="display">0</div>
+		<div id="buttons">
+			<button value="clear" class="clear">Clear</button>
 			<button value="/" class="operator">/</button>
 			<button value="*" class="operator">*</button>
 			<button value="-" class="operator">-</button>
 			<button value="+" class="operator">+</button>
-			<button value="=" class="operator">=</button>
-		</div>
-		<div id="operands">
+			<button value="=" class="equals">=</button>
 			<button value="7" class="operand">7</button>
 			<button value="8" class="operand">8</button>
 			<button value="9" class="operand">9</button>
@@ -27,9 +25,9 @@
 			<button value="1" class="operand">1</button>
 			<button value="2" class="operand">2</button>
 			<button value="3" class="operand">3</button>
+			<button value="0" class="operand">0</button>
+			<button value="." class="comma" class="operand">.</button>
 		</div>
-		<button value="0" id="zero">0</button>
-		<button value="." id="comma">.</button>
 	</div>
 </body>
 </html>
