@@ -75,6 +75,16 @@ function compose(button) {
 			}
 			printValue(result);
 			break;
+
+		case "comma":
+			if (result.includes(".")) {
+				break;
+			}
+			else {
+				result += button.value;
+			}
+			printValue(result);
+			break;
 		
 		case "equals":
 			secondValue = Number(result);
