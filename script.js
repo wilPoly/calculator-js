@@ -30,7 +30,7 @@ function operate(operator, a, b) {
 }
 
 const display = document.querySelector("#display");
-const buttons = document.querySelectorAll("#buttons > button");
+const buttons = document.querySelectorAll("button");
 
 buttons.forEach(button => {
 	button.addEventListener("click", (e) => compose(e.target));

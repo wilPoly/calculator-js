@@ -1,50 +1,111 @@
+@import url(reset.css);
+
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--main-background: #cccc;
+	--puerto-rico: #3eb89e;
+	--steel-gray: #1f1b33;
+	--red: #f43656;
+	--black: #14091c;
+}
+
+body {
+	background-color: var(--main-background);
+	/* font-size: 1em; */
+}
+
 #calc-wrap {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(6, 1fr);
-	width: 75%;
+	height: 75%;
+	width: 50%;
+	margin: 5% auto;
+	border: 6px solid var(--steel-gray);
+	/* min-height: 155px;
+	min-width: 119px; */
 }
 
 	#display {
-		border: 1px solid black;
-		/* height: 150px; */
+		border: 6px solid black;
+		background-color: white;
 		text-align: right;
-		padding: 2px;
-		margin: 4px;
-		box-sizing: border-box;
+		font-size: 4em;
+		grid-area: 1 / 1 / 2 / 5;
+		align-self: stretch;
 	}
 
-	#clear {
-		grid-column-start: 1;
-		grid-column-end: 4;
+	button {
+		background-color: var(--puerto-rico);
+		border: 3px solid var(--steel-gray);
+		color: var(--steel-gray);
+		font-size: 3em;
+		align-self: stretch;
 	}
 
-	#zero {
-		grid-column: 1 / span 2;
-		grid-row: 6 / span 2;
+	button:hover {
+		background-color: var(--steel-gray);
+		color: var(--puerto-rico);
 	}
 
-	#comma {
-		grid-column: 3 / 4;
-		grid-row: 6 / 6
-	}
-	
-	#operators {
-		grid-column: 4 / span 1;
-		grid-row: 2 / span 5;
-		display: flex;
-		flex-direction: column;
+	.operator, .equals {
+		grid-column: 4 / 5;
+		background-color: var(--red);
 	}
 
-	#operands {
-		grid-column: 1 / 4;
-		grid-row: 3 / 6;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
+	.operator:hover,
+	.equals:hover	{
+		background-color: var(--black);
+		color: var(--red);
 	}
 
-	.operand {
-		flex-basis: 33%;
-		flex-grow: 1;
+	.clear {
+		grid-column: span 3;
+	}
+
+	button[value="0"] {
+		grid-area: 6 / 1 / 7 / 3;
+	}
+
+	button[value="7"] {
+		grid-area: 3 / 1 / 4 / 2;
+	}
+
+	button[value="8"] {
+		grid-area: 3 / 2 / 4 / 3;
+	}
+
+	button[value="9"] {
+		grid-area: 3 / 3 / 4 / 4;
+	}
+
+	button[value="4"] {
+		grid-area: 4 / 1 / 5 / 2;
+	}
+
+	button[value="5"] {
+		grid-area: 4 / 2 / 5 / 3;
+	}
+
+	button[value="6"] {
+		grid-area: 4 / 3 / 5 / 4;
+	}
+
+	button[value="1"] {
+		grid-area: 5 / 1 / 6 / 2;
+	}
+
+	button[value="2"] {
+		grid-area: 5 / 2 / 6 / 3;
+	}
+
+	button[value="3"] {
+		grid-area: 5 / 3 / 6 / 4;
+	}
+
+	.comma {
+		grid-area: 6 / 3 / 7 / 4;
 	}
