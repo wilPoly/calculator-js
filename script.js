@@ -92,9 +92,22 @@ function compose(button) {
 			printValue(result);
 			firstValue = 0;
 			break;
-		
+
 		case "clear":
 			allClear();
+			break;
+
+		case "back":
+			if (result === "0")	{
+				break;
+			}
+			else if (result.length === 1){
+					allClear();
+			}
+			else {
+				result = result.slice(0, result.length-1);
+				printValue(result);
+			}
 			break;
 	}
 }
