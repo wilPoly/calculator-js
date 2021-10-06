@@ -12,16 +12,20 @@ buttons.forEach(button => {
 function operate(operator, a, b) {
 	switch (operator) {
 		case "+":
-			return a + b;
+			return formatNumber(a + b);
 		case "-":
-			return a - b;
+			return formatNumber(a - b);
 		case "*":
-			return a * b;
+			return formatNumber(a * b);
 		case "/":
-			return a / b;
+			return formatNumber(a / b);
 		default:
 			return "0";
 	}
+}
+
+function formatNumber(value) {
+	return value.toFixed(3).replace(/\.000$/, "");
 }
 
 function compose(button) {
@@ -29,7 +33,7 @@ function compose(button) {
 		case "operator":
 			if (firstValue !== 0) {
 				secondValue = Number(result);
-				result = operate(operation, firstValue, secondValue).toFixed(3);
+				result = operate(operation, firstValue, secondValue);
 				printValue(result);
 				operation = button.value;
 				firstValue = Number(result);
@@ -66,7 +70,7 @@ function compose(button) {
 		
 		case "equals":
 			secondValue = Number(result);
-			result = operate(operation, firstValue, secondValue).toFixed(3);
+			result = operate(operation, firstValue, secondValue);
 			printValue(result);
 			firstValue = 0;
 			break;
