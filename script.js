@@ -25,7 +25,7 @@ function operate(operator, a, b) {
 }
 
 function formatNumber(value) {
-	return value.toFixed(3).replace(/\.000$/, "");
+	return value.toFixed(3).replace(/\.0+$/, "");
 }
 
 function compose(button) {
