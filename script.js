@@ -1,50 +1,28 @@
-function add(a, b) {
-	return a + b;
-}
-
-function substract(a, b) {
-	return a - b;
-}
-
-function multiply(a, b) {
-	return a * b;
-}
-
-function divide(a, b) {
-	return a / b;
-}
-
-function operate(operator, a, b) {
-	switch (operator) {
-		case "+":
-			return add(a, b);
-		case "-":
-			return substract(a, b);
-		case "*":
-			return multiply(a, b);
-		case "/":
-			return divide(a,b);
-		default:
-			return "0";
-	}
-}
-
 const display = document.querySelector("#display");
 const buttons = document.querySelectorAll("button");
+let result = "0";
+let firstValue = 0;
+let secondValue = 0;
+let operation = "";
 
 buttons.forEach(button => {
 	button.addEventListener("click", (e) => compose(e.target));
 });
 
-function printValue(value) {
-	display.textContent = `${value}`;
-	console.log(value, typeof value);
+function operate(operator, a, b) {
+	switch (operator) {
+		case "+":
+			return a + b;
+		case "-":
+			return a - b;
+		case "*":
+			return a * b;
+		case "/":
+			return a / b;
+		default:
+			return "0";
+	}
 }
-
-let result = "0";
-let firstValue = 0;
-let secondValue = 0;
-let operation = "";
 
 function compose(button) {
 	switch (button.className) {
@@ -110,6 +88,11 @@ function compose(button) {
 			}
 			break;
 	}
+}
+
+function printValue(value) {
+	display.textContent = `${value}`;
+	console.log(value, typeof value);
 }
 
 function allClear() {
