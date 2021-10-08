@@ -32,13 +32,13 @@ function compose(button) {
 	switch (button.className) {
 		case "operator":
 			if (firstValue !== 0) {
-				secondValue = Number(result);
-				result = operate(operation, firstValue, secondValue);
-				printValue(result);
-				operation = button.value;
-				firstValue = Number(result);
-				secondValue = 0;
-				result = "0";
+				secondValue = Number(result); //
+				result = operate(operation, firstValue, secondValue); //
+				printValue(result); //
+				operation = button.value; //
+				firstValue = Number(result); //
+				secondValue = 0; //
+				result = "0"; //
 			}
 			else {
 				operation = button.value;
