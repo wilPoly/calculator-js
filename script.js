@@ -6,7 +6,13 @@ let secondValue = 0;
 let operation = "";
 
 buttons.forEach(button => {
-	button.addEventListener("click", (e) => compose(e.target));
+	button.addEventListener("click", (e) => compose(e.target.value));
+});
+
+window.addEventListener("keydown", (e) => {
+	compose(e.key);
+	console.log(e.key);
+	e.preventDefault();
 });
 
 function operate(operator, a, b) {
@@ -28,69 +34,80 @@ function formatNumber(value) {
 	return value.toFixed(3).replace(/\.0+$/, "");
 }
 
-function compose(button) {
-	switch (button.className) {
-		case "operator":
+function compose(input) {
+	let operators = ["+", "-", "*", "/"];
+	let operands = [...Array(10).keys()].map(i => i.toString());
+
+	switch (true) {
+		case operators.includes(input):
 			if (firstValue !== 0) {
-				secondValue = Number(result); //
-				result = operate(operation, firstValue, secondValue); //
-				printValue(result); //
-				operation = button.value; //
-				firstValue = Number(result); //
-				secondValue = 0; //
-				result = "0"; //
+				equals();
+				operation = input;
+				firstValue = Number(result);
+				secondValue = 0;
+				result = "0";
 			}
 			else {
-				operation = button.value;
+				operation = input;
 				firstValue = Number(result);
 				result = "0";
 				console.log(result, firstValue);
 			}
 			break;
 
-		case "operand":
+		case operands.includes(input):
+			console.log(input);
 			if (result === "0") {
-				result = button.value;
+				result = input;
 			}
 			else {
-				result += button.value;
+				result += input;
 			}
 			printValue(result);
 			break;
 
-		case "comma":
+		case input === ".":
 			if (result.includes(".")) {
 				break;
 			}
 			else {
-				result += button.value;
+				result += input;
 			}
 			printValue(result);
 			break;
 		
-		case "equals":
-			secondValue = Number(result);
-			result = operate(operation, firstValue, secondValue);
-			printValue(result);
-			firstValue = 0;
+		case input === "=":
+		case input === "Enter":
+			equals();
 			break;
 
-		case "clear":
+		case input === "Escape":
 			allClear();
 			break;
 
-		case "back":
-			if (result === "0")	{
-				break;
-			}
-			else if (result.length === 1){
-					allClear();
-			}
-			else {
-				result = result.slice(0, result.length-1);
-				printValue(result);
-			}
+		case input === "Backspace":
+			backSpace();
 			break;
+	}
+}
+
+function equals () {
+	secondValue = Number(result);
+	result = operate(operation, firstValue, secondValue);
+	printValue(result);
+	firstValue = 0;
+}
+
+function backSpace() {
+	if (result !== "0")	{
+		if (result.length === 1){
+			result = "0";
+			printValue(result);
+		}
+		else {
+			result = result.slice(0, result.length-1);
+			printValue(result);
+		}
 	}
 }
 
